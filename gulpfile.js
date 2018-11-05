@@ -2,7 +2,7 @@
  * @Author: mikey.zhang 
  * @Date: 2018-11-05 09:00:22 
  * @Last Modified by: mikey.zhang
- * @Last Modified time: 2018-11-05 09:48:06
+ * @Last Modified time: 2018-11-05 09:53:41
  */
 
 //引入模块
@@ -57,9 +57,18 @@ gulp.task('uglify', function() {
         .pipe(uglify())
         .pipe(gulp.dest('./src/libs/minjs'))
 });
+
 //压缩合并css
 gulp.task('cleanCSS', function() {
     return gulp.src('./src/css/*.css')
         .pipe(cleanCSS())
         .pipe(gulp.dest('./src/css/mincss'))
 });
+
+//输出至dist
+gulp.task('dest', function() {
+    return gulp.src('./src')
+        .pipe(gulp.dest('./dest'))
+})
+
+gulp.task('last', gulp.series('sass', 'uglify', 'cleanCSS', 'server', 'watch'));
