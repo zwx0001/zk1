@@ -1,0 +1,71 @@
+@import 'common.scss';
+@import 'mixin.scss';
+.wrapper {
+    width: 100%;
+    height: 100%;
+    @include box_flex;
+    @include justify(space-around);
+    @include direction(column);
+    @include align;
+    background: #F5F5F5;
+    .item {
+        width: 95%;
+        height: pxTorem(50px);
+        border: solid pxTorem(1px) #ccc;
+        border-radius: pxTorem(8px);
+        box-shadow: 0 0 pxTorem(10px) 0 #ccc;
+        @include box_flex;
+        @include justify(space-between);
+        @include align;
+        .left {
+            width: 70%;
+            height: 100%;
+            line-height: pxTorem(50px);
+            padding-left: pxTorem(10px);
+            font-size: pxTorem(18px);
+            color: gray;
+        }
+        .right {
+            width: 30%;
+            border-left: solid pxTorem(1px) #ccc;
+            background: #E1E1E1;
+            height: 100%;
+            line-height: pxTorem(50px);
+            font-size: pxTorem(20px);
+            text-align: center;
+            color: #fff;
+            border-top-right-radius: pxTorem(8px);
+            border-bottom-right-radius: pxTorem(8px);
+        }
+    }
+    .i1 {
+        .right {
+            color: #655555!important;
+        }
+    }
+    .i2 {
+        .right {
+            background: #175693;
+        }
+    }
+    .i3 {
+        .right {
+            background: #83963A;
+        }
+    }
+    .i4 {
+        .right {
+            background: #AB1B5B;
+        }
+    }
+    .i5 {
+        .right {
+            background: #EE6317;
+        }
+    }
+    .i6 {
+        .right {
+            background: #3C3C3C;
+        }
+    }
+}
