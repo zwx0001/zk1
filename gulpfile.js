@@ -2,7 +2,7 @@
  * @Author: mikey.zhang 
  * @Date: 2018-11-05 09:00:22 
  * @Last Modified by: mikey.zhang
- * @Last Modified time: 2018-11-05 09:23:29
+ * @Last Modified time: 2018-11-05 09:48:06
  */
 
 //引入模块
@@ -15,8 +15,6 @@ var uglify = require('gulp-uglify');
 var babel = require('gulp-babel');
 var sass = require('gulp-sass');
 var cleanCSS = require('gulp-clean-css');
-
-//任务
 
 //起服务
 gulp.task('server', function() {
@@ -37,3 +35,31 @@ gulp.task('server', function() {
             }
         }));
 })
+
+//编译sass
+gulp.task('sass', function() {
+    return gulp.src('./src/scss/style.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./src/css'))
+})
+
+//监听sass
+gulp.task('watch', function() {
+    return gulp.watch('./src/scss/style.scss', gulp.series('sass'))
+})
+
+//压缩合并js
+gulp.task('uglify', function() {
+    return gulp.src('./src/libs/*.js')
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .pipe(uglify())
+        .pipe(gulp.dest('./src/libs/minjs'))
+});
+//压缩合并css
+gulp.task('cleanCSS', function() {
+    return gulp.src('./src/css/*.css')
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('./src/css/mincss'))
+});
