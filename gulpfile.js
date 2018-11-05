@@ -2,7 +2,7 @@
  * @Author: mikey.zhang 
  * @Date: 2018-11-05 09:00:22 
  * @Last Modified by: mikey.zhang
- * @Last Modified time: 2018-11-05 09:53:41
+ * @Last Modified time: 2018-11-05 10:24:20
  */
 
 //引入模块
@@ -12,7 +12,6 @@ var path = require('path');
 var url = require('url');
 var webserver = require('gulp-webserver');
 var uglify = require('gulp-uglify');
-var babel = require('gulp-babel');
 var sass = require('gulp-sass');
 var cleanCSS = require('gulp-clean-css');
 
@@ -51,9 +50,6 @@ gulp.task('watch', function() {
 //压缩合并js
 gulp.task('uglify', function() {
     return gulp.src('./src/libs/*.js')
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
         .pipe(uglify())
         .pipe(gulp.dest('./src/libs/minjs'))
 });
